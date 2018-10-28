@@ -14,9 +14,9 @@ namespace Tests
         public void TestGetElements()
         {
             var board = new GameBoard();
-            for (int x = 0; x < 9; x++)
+            for (var x = 0; x < 9; x++)
             {
-                for (int y = 0; y < 9; y++)
+                for (var y = 0; y < 9; y++)
                 {
                     try
                     {
@@ -33,7 +33,7 @@ namespace Tests
         [Fact]
         public void TestCellFilled()
         {
-            int[,] cellMapp = new int[9, 9];
+            var cellMapp = new int[9, 9];
             cellMapp[0, 0] = 5;
             var board = new GameBoard(cellMapp);
             Assert.False(board.IsCellNotFilled(0, 0));
@@ -44,7 +44,7 @@ namespace Tests
         [ClassData(typeof(SudokuBoardData))]
         public void TestCreateBoard(int[,] cells)
         {
-            bool isSuccess = true;
+            var isSuccess = true;
             try
             {
                 var board = new GameBoard(cells);

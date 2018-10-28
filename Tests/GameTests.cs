@@ -30,7 +30,7 @@ namespace Tests
         [ClassData(typeof(SudokuBoardData))]
         public void TestIsFullBoardFilled(int[,] cells)
         {
-            bool isSuccess = true;
+            var isSuccess = true;
 
             Assert.True(isSuccess);
         }

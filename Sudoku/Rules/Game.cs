@@ -36,7 +36,7 @@ namespace Sudoku.Rules
             try
             {
                 var tmpGame = new Game(cells);
-                return true && !tmpGame.UnsolvedCells.Any();
+                return !tmpGame.UnsolvedCells.Any();
             }
             catch
             {

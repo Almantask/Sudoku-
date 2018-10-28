@@ -29,9 +29,9 @@ namespace Sudoku.SudokuElements
         private void CopyCells(int[,] cells)
         {
             Cells = new int[9,9];
-            for (int x = 0; x < 9; x++)
+            for (var x = 0; x < 9; x++)
             {
-                for (int y = 0; y < 9; y++)
+                for (var y = 0; y < 9; y++)
                 {
                     Cells[x, y] = cells[x, y];
                 }
@@ -54,9 +54,9 @@ namespace Sudoku.SudokuElements
 
         private void RemoveUsedPossibilities()
         {
-            for (int x = 0; x < 9; x++)
+            for (var x = 0; x < 9; x++)
             {
-                for (int y = 0; y < 9; y++)
+                for (var y = 0; y < 9; y++)
                 {
                     var cellValue = Cells[x, y];
                     if (cellValue != SudokuElementSolution.INVALID_VALUE)
@@ -76,7 +76,7 @@ namespace Sudoku.SudokuElements
 
         private void BuildRowsAndColumns()
         {
-            for (int i = 0; i < 9; i++)
+            for (var i = 0; i < 9; i++)
             {
                 _rows[i] = new SudokuElementSolution();
                 _columns[i] = new SudokuElementSolution();
@@ -87,9 +87,9 @@ namespace Sudoku.SudokuElements
 
         private void BuildSquares()
         {
-            for (int x = 0; x < 3; x++)
+            for (var x = 0; x < 3; x++)
             {
-                for (int y = 0; y < 3; y++)
+                for (var y = 0; y < 3; y++)
                 {
                     _squares[x,y] = new SudokuElementSolution();
                 }

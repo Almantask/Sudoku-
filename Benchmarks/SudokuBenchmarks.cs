@@ -12,11 +12,6 @@ namespace ConsoleApp1
 {
     public class SudokuBenchmarks
     {
-        public SudokuBenchmarks()
-        {
-            
-        }
-
         [Benchmark]
         public void EasySolution()
         {

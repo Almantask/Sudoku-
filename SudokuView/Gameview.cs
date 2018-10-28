@@ -10,7 +10,7 @@ namespace SudokuView
 {
     class GameView
     {
-        private Game _game;
+        private readonly Game _game;
         public GameView(Game game)
         {
             _game = game;
@@ -20,10 +20,10 @@ namespace SudokuView
         {
             var cells = _game.Board.Cells;
             DrawHorizontalBorder();
-            for (int x = 0; x < 9; x++)
+            for (var x = 0; x < 9; x++)
             {
                 Console.Write("|");
-                for (int y = 0; y < 9; y++)
+                for (var y = 0; y < 9; y++)
                 {
                     var value = cells[x, y];
                     DrawCell(value);
