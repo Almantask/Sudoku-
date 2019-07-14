@@ -8,7 +8,7 @@ namespace Tests
     public class SudokuSolutionsTests
     {
         [Theory]
-        [Trait("Category", "Board elments")]
+        [Trait("Category", "Board elements")]
         [ClassData(typeof(SudokuSolutionsTestDataInvalid))]
         [ClassData(typeof(SudokuSolutionsTestDataValid))]
         public void Get_Valid_Value_Ok(SudokuElementSolution square, SudokuElementSolution row, SudokuElementSolution col)
@@ -25,7 +25,7 @@ namespace Tests
         }
 
         [Theory]
-        [Trait("Category", "Board elments")]
+        [Trait("Category", "Board elements")]
         [ClassData(typeof(SudokuSolutionsPossibilityRemovalValidData))]
         public void Remove_Valid_Possibility_Ok(SudokuElementSolution square, SudokuElementSolution row, SudokuElementSolution col, int possibility)
         {
@@ -56,7 +56,7 @@ namespace Tests
         }
 
         [Fact]
-        [Trait("Category", "Board elments")]
+        [Trait("Category", "Board elements")]
         public void Get_Possibilities_Empty_Ok()
         {
             var sudokuElement = new SudokuElementSolution(new int[] { });
@@ -64,7 +64,7 @@ namespace Tests
         }
 
         [Fact]
-        [Trait("Category", "Board elments")]
+        [Trait("Category", "Board elements")]
         public void Get_Possibilities_Filled_Ok()
         {
             var sudokuElement = new SudokuElementSolution(1, 2, 3);

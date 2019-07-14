@@ -3,7 +3,6 @@ using Sudoku.Core.Extensions;
 using Sudoku.Core.SudokuElements;
 using System.Collections.Generic;
 using System.Linq;
-
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Sudoku.Tests")]
@@ -82,12 +81,17 @@ namespace Sudoku.Core.Rules
             }
             else
             {
-                foreach (var guess in cellWithLeastSolutions.Solutions)
-                {
-                    var gameSnapshot = game.Clone();
-                    gameSnapshot.AssignGuess(cellWithLeastSolutions, guess);
-                    Solve(gameSnapshot);
-                }
+                Guess(game, cellWithLeastSolutions);
+            }
+        }
+
+        internal protected virtual void Guess(Game game, CellWithSolutions cellWithLeastSolutions)
+        {
+            foreach (var guess in cellWithLeastSolutions.Solutions)
+            {
+                var gameSnapshot = game.Clone();
+                gameSnapshot.AssignGuess(cellWithLeastSolutions, guess);
+                Solve(gameSnapshot);
             }
         }
 
