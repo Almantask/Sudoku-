@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2046
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{A9D2D5AD-0DEA-4B38-ACB3-30D8D439D7BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Tests", "tests\Sudoku.Tests\Sudoku.Tests.csproj", "{A9D2D5AD-0DEA-4B38-ACB3-30D8D439D7BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuView", "SudokuView\SudokuView.csproj", "{BB1D90D2-C453-43D0-8AF5-53947630EBD7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.View", "src\Sudoku.View\Sudoku.View.csproj", "{BB1D90D2-C453-43D0-8AF5-53947630EBD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku", "Sudoku\Sudoku.csproj", "{2EA4AE2B-1F84-48C5-AF11-7B170C9091E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Core", "src\Sudoku.Core\Sudoku.Core.csproj", "{2EA4AE2B-1F84-48C5-AF11-7B170C9091E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmarks", "Benchmarks\Benchmarks.csproj", "{83C9BB24-D1CD-4A68-8B53-EAF2DEFE44D1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Benchmarks", "src\Sudoku.Benchmarks\Sudoku.Benchmarks.csproj", "{83C9BB24-D1CD-4A68-8B53-EAF2DEFE44D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
