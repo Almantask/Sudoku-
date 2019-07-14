@@ -24,7 +24,7 @@ namespace Tests
                 {
                     try
                     {
-                        board.GetSudokuElementsAtCell(x, y);
+                        board.GetSudokuElements(x, y);
                     }
                     catch (Exception ex)
                     {
@@ -66,6 +66,20 @@ namespace Tests
                 message = ex.Message;
             }
             Assert.True(isSuccess, message);
+        }
+
+        [Theory]
+        [Trait("Category", "Cloning")]
+        [ClassData(typeof(EasySudokuBoardData))]
+        public void Clone_Ok(int[,] cells)
+        {
+            var board = new GameBoard(cells);
+            var clone = board.Clone();
+
+            const int topCornerNumber = 10;
+            board.CellsSolution[0, 0] = topCornerNumber;
+
+            Assert.NotEqual(topCornerNumber, clone.CellsSolution[0, 0]);
         }
     }
 }

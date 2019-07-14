@@ -1,11 +1,13 @@
-﻿using System;
+﻿using Sudoku.Core.Exceptions;
+using Sudoku.Core.Extensions;
+using Sudoku.Core.SudokuElements;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Sudoku.Core.SudokuElements;
 
 namespace Sudoku.Core.Rules
 {
-    public class Game
+    public class Game: ICloneable<Game>
     {
         public const int SudokuSize = 9;
 
@@ -50,35 +52,93 @@ namespace Sudoku.Core.Rules
             {
                 for (int y = 0; y < SudokuSize; y++)
                 {
-                    if(!Board.IsCellFilled(x, y))
+                    if (!Board.IsCellFilled(x, y))
                         UnsolvedCells.Add(new Cell(x, y));
                 }
             }
         }
 
-        public void Solve()
+        /// <summary>
+        /// Returns a snapshot of a solved Sudoku.
+        /// </summary>
+        /// <returns></returns>
+        public Game Solve()
         {
-            IList<Cell> solvedCells = new List<Cell>();
+            
+            try
+            {
+                Solve(this);
+            }
+            // Huge workaround to escape recursion
+            catch(SudokuCompletedException exection)
+            {
+                return exection.Game;
+            }
+
+            throw new UnsolvableSudokuException();
+        }
+
+        private void Solve(Game game)
+        {
+            var result = game.FindCellWithLeastSolutions();
+            if (!result.HasValue) return;
+
+            var cellWithLeastSolutions = result.Value;
+            var solutions = cellWithLeastSolutions.Solutions.Count();
+            if (solutions == 1)
+            {
+                game.AssignGuess(cellWithLeastSolutions, cellWithLeastSolutions.Solutions.FirstOrDefault());
+                if (game.IsComplete()) throw new SudokuCompletedException(game);
+                Solve(game);
+            }
+            else
+            {
+                foreach (var guess in cellWithLeastSolutions.Solutions)
+                {
+                    var gameSnapshot = game.Clone();
+                    gameSnapshot.AssignGuess(cellWithLeastSolutions, guess);
+                    Solve(gameSnapshot);
+                }
+            }
+        }
+
+        private void AssignGuess(CellWithSolutions cellWithLeastSolutions, int guess)
+        {
+            var cell = cellWithLeastSolutions.Cell;
+            var elements = Board.GetSudokuElements(cell.X, cell.Y);
+            SudokuElementSolution.RemovePossibility(elements, guess);
+            Board.CellsSolution[cell.X, cell.Y] = guess;
+            UnsolvedCells.Remove(cell);
+        }
+
+        public CellWithSolutions? FindCellWithLeastSolutions()
+        {
+            var leastSolutions = 10;
+            CellWithSolutions? cellWithLeastOptions = null;
+
             foreach (var cell in UnsolvedCells)
             {
-                var elements = Board.GetSudokuElementsAtCell(cell.X, cell.Y);
-                var cellSolution = SudokuElementSolution.GetUniqueCellSolution(elements);
-                if (cellSolution == SudokuElementSolution.InvalidValue) continue;
-
-                solvedCells.Add(cell);
-                Board.Cells[cell.X, cell.Y] = cellSolution;
-                SudokuElementSolution.RemovePossibility(elements, cellSolution);
+                var elements = Board.GetSudokuElements(cell.X, cell.Y);
+                var solutions = SudokuElementSolution.GetValidValues(elements);
+                var count = solutions.Count();
+                if (count < leastSolutions && count > 0)
+                {
+                    leastSolutions = count;
+                    cellWithLeastOptions = new CellWithSolutions(cell, solutions);
+                }
             }
 
-            // Stuck
-            if (!solvedCells.Any())
-            {
-                throw new Exception("Unsolvable sudoku: ran out of solutions");
-            }
+            return cellWithLeastOptions;
+        }
 
-            UnsolvedCells = UnsolvedCells.Except(solvedCells).ToList();
-            if (UnsolvedCells.Any())
-                Solve();
+        public Game Clone()
+        {
+            var clonedGame = MemberwiseClone() as Game;
+            var clonedBoard = Board.Clone() as GameBoard;
+            clonedGame.Board = clonedBoard;
+            clonedGame.UnsolvedCells = UnsolvedCells.ToArray().CloneElementsDeep().ToList();
+
+            return clonedGame;
         }
     }
 }

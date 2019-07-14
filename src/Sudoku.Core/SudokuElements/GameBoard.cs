@@ -1,19 +1,23 @@
-﻿using Sudoku.Core.Rules;
+﻿using Sudoku.Core.Extensions;
+using Sudoku.Core.Rules;
+using System;
 using System.Collections.Generic;
 
 namespace Sudoku.Core.SudokuElements
 {
-    public class GameBoard
+    public class GameBoard: ICloneable<GameBoard>
     {
         private SudokuElementSolution[] _rows;
         private SudokuElementSolution[] _columns;
         private SudokuElementSolution[,] _squares;
 
-        public int[,] Cells;
+        public int[,] CellsSolution;
+        public int[,] CellOriginal;
 
         public GameBoard()
         {
-            Cells = new int[Game.SudokuSize, Game.SudokuSize];
+            CellsSolution = new int[Game.SudokuSize, Game.SudokuSize];
+            CellOriginal = CellsSolution.CloneElements();
             BuildSolutionElements();
             BuildBoardElements();
         }
@@ -27,12 +31,12 @@ namespace Sudoku.Core.SudokuElements
 
         private void CopyCells(int[,] cells)
         {
-            Cells = new int[Game.SudokuSize, Game.SudokuSize];
+            CellsSolution = new int[Game.SudokuSize, Game.SudokuSize];
             for (var x = 0; x < Game.SudokuSize; x++)
             {
                 for (var y = 0; y < Game.SudokuSize; y++)
                 {
-                    Cells[x, y] = cells[x, y];
+                    CellsSolution[x, y] = cells[x, y];
                 }
             }
         }
@@ -59,10 +63,10 @@ namespace Sudoku.Core.SudokuElements
             {
                 for (var y = 0; y < Game.SudokuSize; y++)
                 {
-                    var cellValue = Cells[x, y];
+                    var cellValue = CellsSolution[x, y];
                     if (cellValue != SudokuElementSolution.InvalidValue)
                     {
-                        var elementsAtCell = GetSudokuElementsAtCell(x, y);
+                        var elementsAtCell = GetSudokuElements(x, y);
                         SudokuElementSolution.RemovePossibility(elementsAtCell, cellValue);
                     }
                 }
@@ -71,7 +75,7 @@ namespace Sudoku.Core.SudokuElements
 
         public bool IsCellFilled(int x, int y)
         {
-            var cellValue = Cells[x, y];
+            var cellValue = CellsSolution[x, y];
             return cellValue != SudokuElementSolution.InvalidValue;
         }
 
@@ -84,8 +88,6 @@ namespace Sudoku.Core.SudokuElements
             }
         }
 
-
-
         private void BuildSquares()
         {
             for (var x = 0; x < 3; x++)
@@ -97,7 +99,7 @@ namespace Sudoku.Core.SudokuElements
             }
         }
 
-        public List<SudokuElementSolution> GetSudokuElementsAtCell(int x, int y)
+        public List<SudokuElementSolution> GetSudokuElements(int x, int y)
         {
             return new List<SudokuElementSolution>()
             {
@@ -112,6 +114,18 @@ namespace Sudoku.Core.SudokuElements
             var squareX = x / 3;
             var squareY = y / 3;
             return _squares[squareX,squareY];
+        }
+
+        public GameBoard Clone()
+        {
+            var clonedBoard = MemberwiseClone() as GameBoard;
+
+            clonedBoard.CellsSolution = CellsSolution.CloneElements();
+            clonedBoard._columns = _columns.CloneElementsDeep();
+            clonedBoard._rows = _rows.CloneElementsDeep();
+            clonedBoard._squares = _squares.CloneElementsDeep();
+
+            return clonedBoard;
         }
     }
 }

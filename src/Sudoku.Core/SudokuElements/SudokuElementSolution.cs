@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sudoku.Core.Rules;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,11 +9,11 @@ namespace Sudoku.Core.SudokuElements
     /// Each element is made up from numbers 1-9. Those numbers indicate possibilities.
     /// Square (3x3), Row(1x9) or Column(9x1).
     /// </summary>
-    public class SudokuElementSolution
+    public class SudokuElementSolution: ICloneable<SudokuElementSolution>
     {
         public const int InvalidValue = 0;
 
-        private readonly List<int> _possibilities;
+        private List<int> _possibilities;
 
         /// <summary>
         /// Sudoku element with all possibilities (1-9).
@@ -55,14 +56,6 @@ namespace Sudoku.Core.SudokuElements
             return new List<int>() {0};
         }
 
-        public static int GetUniqueCellSolution(IList<SudokuElementSolution> elementsCollection)
-        {
-            var validValues = GetValidValues(elementsCollection);
-            if (validValues.Count() != 1)
-                return InvalidValue;
-            return validValues.FirstOrDefault();
-        }
-
         /// <summary>
         /// Gets intersection of the 3 sudoku elements.
         /// </summary>
@@ -86,6 +79,16 @@ namespace Sudoku.Core.SudokuElements
             {
                 elements.RemovePossibility(possibility);
             }
+        }
+
+        public SudokuElementSolution Clone()
+        {
+            var clonedSolution = MemberwiseClone() as SudokuElementSolution;
+            var possibilities = new int[_possibilities.Count];
+            _possibilities.CopyTo(possibilities);
+            clonedSolution._possibilities = possibilities.ToList();
+
+            return clonedSolution;
         }
     }
 }

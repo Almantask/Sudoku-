@@ -42,8 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Sudokus.cs" />
+    <Compile Include="Exceptions\SudokuCompletedException.cs" />
+    <Compile Include="Exceptions\UnsolvableSudokuException.cs" />
+    <Compile Include="Extensions\Array2DExtensions.cs" />
+    <Compile Include="Extensions\ArrayExtensions.cs" />
     <Compile Include="Rules\Game.cs" />
+    <Compile Include="Rules\ICloneable.cs" />
     <Compile Include="SudokuElements\Cell.cs" />
+    <Compile Include="SudokuElements\CellWithSolution.cs" />
     <Compile Include="SudokuElements\GameBoard.cs" />
     <Compile Include="SudokuElements\SudokuElementSolution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

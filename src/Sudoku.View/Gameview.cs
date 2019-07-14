@@ -13,7 +13,7 @@ namespace SudokuView
 
         public void Refresh()
         {
-            var cells = _game.Board.Cells;
+            var cells = _game.Board.CellsSolution;
             DrawHorizontalBorder();
             for (var x = 0; x < 9; x++)
             {

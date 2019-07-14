@@ -1,6 +1,8 @@
-﻿namespace Sudoku.Core.SudokuElements
+﻿using Sudoku.Core.Rules;
+
+namespace Sudoku.Core.SudokuElements
 {
-    public struct Cell
+    public struct Cell : ICloneable<Cell>
     {
         public int X;
         public int Y;
@@ -9,6 +11,11 @@
         {
             X = x;
             Y = y;
+        }
+
+        public Cell Clone()
+        {
+            return (Cell)MemberwiseClone();
         }
     }
 }
