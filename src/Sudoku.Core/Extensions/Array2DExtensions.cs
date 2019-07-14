@@ -1,13 +1,8 @@
 ﻿using Sudoku.Core.Rules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sudoku.Core.Extensions
 {
-    public static class Array2DExtensions
+    internal static class Array2DExtensions
     {
         public static T[,] CloneElements<T>(this T[,] array)
         {

@@ -1,9 +1,5 @@
 ﻿using Sudoku.Core.Rules;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sudoku.Core.Exceptions
 {
@@ -11,7 +7,7 @@ namespace Sudoku.Core.Exceptions
     /// This kind of exception is exceptionally bad :).
     /// Used just for returning from recursion
     /// </summary>
-    public class SudokuCompletedException: Exception
+    internal class SudokuCompletedException: Exception
     {
         public Game Game { get; }
         public SudokuCompletedException(Game game)

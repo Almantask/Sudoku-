@@ -1,6 +1,5 @@
 ﻿using Sudoku.Core.Extensions;
 using Sudoku.Core.Rules;
-using System;
 using System.Collections.Generic;
 
 namespace Sudoku.Core.SudokuElements

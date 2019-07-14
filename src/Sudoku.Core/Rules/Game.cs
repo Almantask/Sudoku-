@@ -1,10 +1,12 @@
 ﻿using Sudoku.Core.Exceptions;
 using Sudoku.Core.Extensions;
 using Sudoku.Core.SudokuElements;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("Sudoku.Tests")]
 namespace Sudoku.Core.Rules
 {
     public class Game: ICloneable<Game>
@@ -27,22 +29,9 @@ namespace Sudoku.Core.Rules
             BuildUnsolvedCells();
         }
 
-        public bool IsComplete()
+        internal bool IsComplete()
         {
             return !UnsolvedCells.Any();
-        }
-
-        public static bool IsFilledCorrectly(int[,] cells)
-        {
-            try
-            {
-                var tmpGame = new Game(cells);
-                return !tmpGame.UnsolvedCells.Any();
-            }
-            catch
-            {
-                return false;
-            }
         }
 
         private void BuildUnsolvedCells()
@@ -78,7 +67,7 @@ namespace Sudoku.Core.Rules
             throw new UnsolvableSudokuException();
         }
 
-        private void Solve(Game game)
+        protected void Solve(Game game)
         {
             var result = game.FindCellWithLeastSolutions();
             if (!result.HasValue) return;
@@ -102,7 +91,7 @@ namespace Sudoku.Core.Rules
             }
         }
 
-        private void AssignGuess(CellWithSolutions cellWithLeastSolutions, int guess)
+        internal protected void AssignGuess(CellWithSolutions cellWithLeastSolutions, int guess)
         {
             var cell = cellWithLeastSolutions.Cell;
             var elements = Board.GetSudokuElements(cell.X, cell.Y);
@@ -111,7 +100,7 @@ namespace Sudoku.Core.Rules
             UnsolvedCells.Remove(cell);
         }
 
-        public CellWithSolutions? FindCellWithLeastSolutions()
+        internal CellWithSolutions? FindCellWithLeastSolutions()
         {
             var leastSolutions = 10;
             CellWithSolutions? cellWithLeastOptions = null;
