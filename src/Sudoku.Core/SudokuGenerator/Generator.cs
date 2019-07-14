@@ -22,7 +22,8 @@ namespace Sudoku.Core
 
         private void ValidateHiddenAmount(int hidden)
         {
-            if (hidden < 1 || hidden >= Game.SudokuSize * Game.SudokuSize)
+            const int minHiddenCount = 1;
+            if (hidden < minHiddenCount || hidden >= Game.SudokuSize * Game.SudokuSize)
             {
                 throw new InvalidHiddenCellsCountException(hidden);
             }
