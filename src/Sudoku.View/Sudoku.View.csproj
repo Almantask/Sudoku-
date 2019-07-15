@@ -42,15 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Sudokus.cs" />
     <Compile Include="Gameview.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VerticalPosition.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Sudoku.Benchmarks\Sudoku.Benchmarks.csproj">
+      <Project>{83c9bb24-d1cd-4a68-8b53-eaf2defe44d1}</Project>
+      <Name>Sudoku.Benchmarks</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Sudoku.Core\Sudoku.Core.csproj">
       <Project>{2ea4ae2b-1f84-48c5-af11-7b170c9091e3}</Project>
       <Name>Sudoku.Core</Name>

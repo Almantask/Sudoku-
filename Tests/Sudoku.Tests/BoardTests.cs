@@ -1,4 +1,5 @@
 ﻿using System;
+using Sudoku.Core.Exceptions;
 using Sudoku.Core.Rules;
 using Sudoku.Core.SudokuElements;
 using Tests.TestData;
@@ -16,7 +17,7 @@ namespace Tests
             AcccessEachElementOneByOne(board);
         }
 
-        private void AcccessEachElementOneByOne(GameBoard board)
+        private static void AcccessEachElementOneByOne(GameBoard board)
         {
             for (var x = 0; x < Game.SudokuSize; x++)
             {
@@ -28,7 +29,7 @@ namespace Tests
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception($"At ({x},{y}):" + ex.Message);
+                        throw new SudokuElementsNotFoundException(x, y, ex.Message);
                     }
                 }
             }
@@ -58,7 +59,7 @@ namespace Tests
             var message = "";
             try
             {
-                var board = new GameBoard(cells);
+                new GameBoard(cells);
             }
             catch(Exception ex)
             {

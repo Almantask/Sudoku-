@@ -14,7 +14,7 @@ namespace SudokuView
         public void Refresh()
         {
             var cells = _game.Board.CellsSolution;
-            DrawHorizontalBorder();
+            DrawHorizontalBorder(VerticalPosition.Bot);
             for (var x = 0; x < 9; x++)
             {
                 Console.Write("|");
@@ -26,20 +26,13 @@ namespace SudokuView
                 Console.Write("|");
                 Console.WriteLine();
             }
-            DrawHorizontalBorder();
+            DrawHorizontalBorder(VerticalPosition.Top);
         }
 
-        private void DrawCell(int value)
-        {
-            if (value == 0)
-                Console.Write("?");
-            else
-                Console.Write(value);
-        }
+        private void DrawCell(int value) => Console.Write(value == 0 ? "?" : value.ToString());
 
-        private void DrawHorizontalBorder()
-        {
-            Console.WriteLine("-----------");
-        }
+        private void DrawHorizontalBorder(VerticalPosition position) 
+            => Console.WriteLine(position == VerticalPosition.Bot ? "___________" : "‾‾‾‾‾‾‾‾‾‾‾");
+
     }
 }

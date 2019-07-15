@@ -6,9 +6,12 @@ using Sudoku.Core.SudokuGenerator;
 
 namespace Sudoku.Core
 {
-    public class Generator
+    public static class Generator
     {
-        public int[,] Generate(int hidden)
+        public const int MaxHiddenCount = Game.SudokuSize * Game.SudokuSize;
+        public const int MinHiddenCount = 1;
+
+        public static int[,] Generate(int hidden)
         {
             ValidateHiddenAmount(hidden);
 
@@ -20,17 +23,18 @@ namespace Sudoku.Core
             return cells;
         }
 
-        private void ValidateHiddenAmount(int hidden)
+        public static bool IsValidHiddenCount(int hidden) => hidden > MinHiddenCount && hidden < MaxHiddenCount;
+
+        private static void ValidateHiddenAmount(int hidden)
         {
-            const int minHiddenCount = 1;
-            if (hidden < minHiddenCount || hidden >= Game.SudokuSize * Game.SudokuSize)
+            if (!IsValidHiddenCount(hidden))
             {
                 throw new InvalidHiddenCellsCountException(hidden);
             }
 
         }
 
-        private void HideRandomly(int count, int[,] cells)
+        private static void HideRandomly(int count, int[,] cells)
         {
             var indexes = CollectionExtensions.CreateIndexesFromZeroToCount(Game.SudokuSize*Game.SudokuSize);
             for(var i = 0; i < count; i++)

@@ -41,7 +41,9 @@ namespace Sudoku.Core.Rules
                 for (int y = 0; y < SudokuSize; y++)
                 {
                     if (!Board.IsCellFilled(x, y))
+                    {
                         UnsolvedCells.Add(new Cell(x, y));
+                    }
                 }
             }
         }
@@ -52,7 +54,6 @@ namespace Sudoku.Core.Rules
         /// <returns></returns>
         public Game Solve()
         {
-            
             try
             {
                 Solve(this);
@@ -69,14 +70,20 @@ namespace Sudoku.Core.Rules
         protected void Solve(Game game)
         {
             var result = game.FindCellWithLeastSolutions();
-            if (!result.HasValue) return;
+            if (!result.HasValue)
+            {
+                return;
+            }
 
             var cellWithLeastSolutions = result.Value;
             var solutions = cellWithLeastSolutions.Solutions.Count();
             if (solutions == 1)
             {
                 game.AssignGuess(cellWithLeastSolutions, cellWithLeastSolutions.Solutions.FirstOrDefault());
-                if (game.IsComplete()) throw new SudokuCompletedException(game);
+                if (game.IsComplete())
+                {
+                    throw new SudokuCompletedException(game);
+                }
                 Solve(game);
             }
             else
@@ -85,7 +92,7 @@ namespace Sudoku.Core.Rules
             }
         }
 
-        internal protected virtual void Guess(Game game, CellWithSolutions cellWithLeastSolutions)
+        private protected virtual void Guess(Game game, CellWithSolutions cellWithLeastSolutions)
         {
             foreach (var guess in cellWithLeastSolutions.Solutions)
             {
@@ -95,7 +102,7 @@ namespace Sudoku.Core.Rules
             }
         }
 
-        internal protected void AssignGuess(CellWithSolutions cellWithLeastSolutions, int guess)
+        internal void AssignGuess(CellWithSolutions cellWithLeastSolutions, int guess)
         {
             var cell = cellWithLeastSolutions.Cell;
             var elements = Board.GetSudokuElements(cell.X, cell.Y);

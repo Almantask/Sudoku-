@@ -4,8 +4,8 @@ namespace Sudoku.Core.SudokuElements
 {
     public struct Cell : ICloneable<Cell>
     {
-        public int X;
-        public int Y;
+        public readonly int X;
+        public readonly int Y;
 
         public Cell(int x, int y)
         {
