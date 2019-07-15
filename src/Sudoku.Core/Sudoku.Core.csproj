@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -42,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Sudokus.cs" />
+    <Compile Include="Exceptions\ElementsNotFoundException.cs" />
     <Compile Include="Exceptions\InvalidHiddenCellsCount.cs" />
     <Compile Include="Exceptions\SudokuCompletedException.cs" />
     <Compile Include="Exceptions\UnsolvableSudokuException.cs" />
@@ -55,6 +58,7 @@
     <Compile Include="SudokuElements\GameBoard.cs" />
     <Compile Include="SudokuElements\SudokuElementSolution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Exceptions\WrongSudokuMapException.cs" />
     <Compile Include="SudokuGenerator\Generator.cs" />
     <Compile Include="SudokuGenerator\RandomGame.cs" />
   </ItemGroup>

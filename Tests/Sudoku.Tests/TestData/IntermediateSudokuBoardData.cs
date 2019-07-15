@@ -11,7 +11,7 @@ namespace Tests.TestData
             {
                 new object[]
                 {
-                    new int[Game.SudokuSize, Game.SudokuSize]
+                    new int[,]
                     {
                         {0, 2, 0, 6, 0, 8, 0, 0, 0},
                         {5, 8, 0, 0, 0, 9, 7, 0, 0},

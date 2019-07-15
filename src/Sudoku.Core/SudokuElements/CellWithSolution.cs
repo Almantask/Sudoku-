@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("Sudoku.Tests")]
 namespace Sudoku.Core.SudokuElements
 {
-    public struct CellWithSolutions
+    internal struct CellWithSolutions
     {
         public Cell Cell { get; }
         public IEnumerable<int> Solutions { get; }

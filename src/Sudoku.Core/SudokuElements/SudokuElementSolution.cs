@@ -43,7 +43,7 @@ namespace Sudoku.Core.SudokuElements
             }
             else
             {
-                throw new Exception("Wrong sudoku map");
+                throw new WrongSudokuMapException();
             }
         }
 
@@ -53,7 +53,7 @@ namespace Sudoku.Core.SudokuElements
             {
                 return _possibilities;
             }
-            return new List<int>() {0};
+            return new List<int>{0};
         }
 
         /// <summary>

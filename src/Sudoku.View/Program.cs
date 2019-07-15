@@ -1,14 +1,15 @@
 using System;
+using System.Text;
 using Sudoku.Core;
 using Sudoku.Core.Rules;
-using Sudoku.View.Data;
 
 namespace SudokuView
 {
-    class Program
+    internal static class Program
     {
         static void Main(string[] args)
         {
+            Console.OutputEncoding = Encoding.UTF8;
             do
             {
                 var hidden = PromptForHiddenCellsAmount();
@@ -19,14 +20,14 @@ namespace SudokuView
 
         private static int PromptForHiddenCellsAmount()
         {
-
             Console.Write($"Please insert amount of empty cells in {Game.SudokuSize}x{Game.SudokuSize} matrix: ");
 
             var input = Console.ReadLine();
             var isNumber = int.TryParse(input, out var number);
-            while(!isNumber)
+            while(!isNumber || Generator.IsValidHiddenCount(number))
             {
-                Console.Write($"'{input}' is not a number! Try again: ");
+
+                Console.Write($"'{input}' is not a valid hidden amount. Should be a number between {Generator.MinHiddenCount} and {Generator.MaxHiddenCount}. Try again: ");
                 input = Console.ReadLine();
                 isNumber = int.TryParse(input, out number);
             }
@@ -36,8 +37,7 @@ namespace SudokuView
 
         private static void SolveGeneratedSudoku(int hidden)
         {
-            var generator = new Generator();
-            var cells = generator.Generate(hidden);
+            var cells = Generator.Generate(hidden);
 
             var game = new Game(cells);
             var gameView = new GameView(game);

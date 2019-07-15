@@ -6,7 +6,7 @@ namespace Sudoku.Benchmarks
     {
         static void Main(string[] args)
         {
-            var summary = BenchmarkRunner.Run<SudokuBenchmarks>();
+            BenchmarkRunner.Run<SudokuBenchmarks>();
         }
     }
 }

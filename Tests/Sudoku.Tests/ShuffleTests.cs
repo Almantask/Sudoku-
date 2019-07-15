@@ -12,7 +12,7 @@ namespace Sudoku.Tests
         [Trait("Category", "Extensions")]
         public void Shuffle_Ok()
         {
-            var numbers = new List<int>() { 1, 5, 6, 7 };
+            var numbers = new List<int>{ 1, 5, 6, 7 };
             var shuffled = numbers.Shuffle();
 
             Assert.Equal(numbers.Count, shuffled.Count);

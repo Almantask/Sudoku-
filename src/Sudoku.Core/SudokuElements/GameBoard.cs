@@ -6,12 +6,12 @@ namespace Sudoku.Core.SudokuElements
 {
     public class GameBoard: ICloneable<GameBoard>
     {
+        public int[,] CellsSolution { get; set; }
+        public int[,] CellOriginal { get; }
+
         private SudokuElementSolution[] _rows;
         private SudokuElementSolution[] _columns;
         private SudokuElementSolution[,] _squares;
-
-        public int[,] CellsSolution;
-        public int[,] CellOriginal;
 
         public GameBoard()
         {
@@ -100,7 +100,7 @@ namespace Sudoku.Core.SudokuElements
 
         public List<SudokuElementSolution> GetSudokuElements(int x, int y)
         {
-            return new List<SudokuElementSolution>()
+            return new List<SudokuElementSolution>
             {
                 GetSquare(x, y),
                 _rows[y],

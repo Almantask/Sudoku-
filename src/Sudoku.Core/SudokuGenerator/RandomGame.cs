@@ -13,7 +13,7 @@ namespace Sudoku.Core.SudokuGenerator
     {
         private readonly Random _randomizer = new Random();
 
-        protected internal override void Guess(Game game, CellWithSolutions cellWithLeastSolutions)
+        private protected override void Guess(Game game, CellWithSolutions cellWithLeastSolutions)
         {
             var mixedSolutions = cellWithLeastSolutions.Solutions.ToList().Shuffle();
             foreach (var guess in mixedSolutions)

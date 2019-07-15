@@ -10,7 +10,6 @@ namespace Sudoku.Tests
 {
     public class GeneratorTests
     {
-        private Generator _generator = new Generator();
 
         [Theory]
         [Trait("Category", "Generating")]
@@ -20,37 +19,17 @@ namespace Sudoku.Tests
         [InlineData(10)]
         [InlineData(20)]
         [InlineData(30)]
-        [InlineData(35)]
+        [InlineData(55)]
+        [InlineData(80)]
         public void Generate_Valid(int hidden)
         {
-            var cells = _generator.Generate(hidden);
+            var cells = Generator.Generate(hidden);
 
             var game = new Game(cells);
             var solution = game.Solve();
 
             Assert.NotNull(solution);
         }
-
-        //[Theory]
-        //[Trait("Category", "Generating")]
-        //[InlineData(40)]
-        //[InlineData(45)]
-        //[InlineData(50)]
-        //[InlineData(55)]
-        //[InlineData(60)]
-        //[InlineData(65)]
-        //[InlineData(70)]
-        //[InlineData(75)]
-        //[InlineData(80)]
-        //public void Generate_Long_Solving_Valid(int hidden)
-        //{
-        //    var cells = _generator.Generate(hidden);
-
-        //    var game = new Game(cells);
-        //    var solution = game.Solve();
-
-        //    Assert.NotNull(solution);
-        //}
 
         [Theory]
         [Trait("Category", "Generating")]
@@ -62,7 +41,7 @@ namespace Sudoku.Tests
 
             try
             {
-                _generator.Generate(hidden);
+                Generator.Generate(hidden);
             }
             catch (InvalidHiddenCellsCountException)
             {
