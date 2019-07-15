@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Sudoku.Benchmarks\Sudoku.Benchmarks.csproj" />
     <ProjectReference Include="..\..\src\Sudoku.Core\Sudoku.Core.csproj" />
   </ItemGroup>
 

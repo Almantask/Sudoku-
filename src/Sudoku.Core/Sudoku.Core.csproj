@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Sudokus.cs" />
     <Compile Include="Exceptions\ElementsNotFoundException.cs" />
     <Compile Include="Exceptions\InvalidHiddenCellsCount.cs" />
     <Compile Include="Exceptions\SudokuCompletedException.cs" />

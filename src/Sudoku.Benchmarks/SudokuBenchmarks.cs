@@ -1,5 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
-using Sudoku.Core.Data;
+using Sudoku.Benchmarks.TestData;
 using Sudoku.Core.Rules;
 
 namespace Sudoku.Benchmarks
@@ -9,7 +9,7 @@ namespace Sudoku.Benchmarks
         [Benchmark]
         public void BenchmarkEasySolution()
         {
-            var _game = new Game(Sudokus.EasySudoku);
+            var _game = new Game(EasySudokuBoardData.Cells);
             _game.Solve();
         }
         
