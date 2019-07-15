@@ -17,7 +17,7 @@ namespace Tests
             AcccessEachElementOneByOne(board);
         }
 
-        private void AcccessEachElementOneByOne(GameBoard board)
+        private static void AcccessEachElementOneByOne(GameBoard board)
         {
             for (var x = 0; x < Game.SudokuSize; x++)
             {
