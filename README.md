@@ -5,4 +5,5 @@
 Sudoku solver and generator.
 
 The goal of this project was to make a sudoku solver, mainly focused on the algorithm. 
-Algorithm used was an adaptation of http://www.cs.utep.edu/vladik/cs2401.11a/Sudoku_Solution.pdf provided in pseudo-code.
+Algorithm used was an adaptation of [A study of Sudoku Solving Algorithms by PATRIK BERGGREN
+and DAVID NILSSOM, page 5](http://www.csc.kth.se/utbildning/kandidatexjobb/datateknik/2012/rapport/berggren_patrik_OCH_nilsson_david_K12011.pdf) provided in pseudo-code.
