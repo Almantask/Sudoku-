@@ -16,7 +16,7 @@ namespace Sudoku.Core.SudokuElements
         public GameBoard()
         {
             CellsSolution = new int[Game.SudokuSize, Game.SudokuSize];
-            CellOriginal = CellsSolution.CloneElements();
+            CellOriginal = CellsSolution.Copy();
             BuildSolutionElements();
             BuildBoardElements();
         }
@@ -119,10 +119,10 @@ namespace Sudoku.Core.SudokuElements
         {
             var clonedBoard = MemberwiseClone() as GameBoard;
 
-            clonedBoard.CellsSolution = CellsSolution.CloneElements();
+            clonedBoard.CellsSolution = Array2DExtensions.Copy(CellsSolution);
             clonedBoard._columns = _columns.CloneElementsDeep();
             clonedBoard._rows = _rows.CloneElementsDeep();
-            clonedBoard._squares = _squares.CloneElementsDeep();
+            clonedBoard._squares = _squares.DeepClone();
 
             return clonedBoard;
         }
