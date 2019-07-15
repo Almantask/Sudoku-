@@ -41,7 +41,9 @@ namespace Sudoku.Core.Rules
                 for (int y = 0; y < SudokuSize; y++)
                 {
                     if (!Board.IsCellFilled(x, y))
+                    {
                         UnsolvedCells.Add(new Cell(x, y));
+                    }
                 }
             }
         }

@@ -10,7 +10,6 @@ namespace Sudoku.Core.Exceptions
     {
         public SudokuElementsNotFoundException(int x, int y, string reason): base($"At ({x},{y}), reason: {reason}")
         {
-           
         }
     }
 }

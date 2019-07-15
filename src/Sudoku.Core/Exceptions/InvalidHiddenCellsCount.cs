@@ -10,6 +10,8 @@ namespace Sudoku.Core.Exceptions
     public class InvalidHiddenCellsCountException: Exception
     {
         public InvalidHiddenCellsCountException(int provided) : 
-            base($"Max cells: {Game.SudokuSize * Game.SudokuSize}, provided: {provided}"){ }
+            base($"Max cells: {Game.SudokuSize * Game.SudokuSize}, provided: {provided}")
+        {
+        }
     }
 }

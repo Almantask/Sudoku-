@@ -7,7 +7,7 @@ namespace Sudoku.Benchmarks
     public class SudokuBenchmarks
     {
         [Benchmark]
-        public void EasySolution()
+        public void BenchmarkEasySolution()
         {
             var _game = new Game(Sudokus.EasySudoku);
             _game.Solve();

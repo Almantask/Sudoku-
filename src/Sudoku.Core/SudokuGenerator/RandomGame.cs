@@ -11,8 +11,6 @@ namespace Sudoku.Core.SudokuGenerator
 {
     internal class RandomGame: Game
     {
-        private readonly Random _randomizer = new Random();
-
         private protected override void Guess(Game game, CellWithSolutions cellWithLeastSolutions)
         {
             var mixedSolutions = cellWithLeastSolutions.Solutions.ToList().Shuffle();
