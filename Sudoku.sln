@@ -1,15 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29102.190
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Tests", "Tests\Sudoku.Tests\Sudoku.Tests.csproj", "{A9D2D5AD-0DEA-4B38-ACB3-30D8D439D7BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.View", "src\Sudoku.View\Sudoku.View.csproj", "{BB1D90D2-C453-43D0-8AF5-53947630EBD7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{34B18AB1-2A87-4C17-9F78-8ECFC15F28BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Core", "src\Sudoku.Core\Sudoku.Core.csproj", "{2EA4AE2B-1F84-48C5-AF11-7B170C9091E3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1A61FA10-622F-4B47-9A81-2162F26BB068}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Benchmarks", "src\Sudoku.Benchmarks\Sudoku.Benchmarks.csproj", "{83C9BB24-D1CD-4A68-8B53-EAF2DEFE44D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Benchmarks", "src\Sudoku.Benchmarks\Sudoku.Benchmarks.csproj", "{D76309D7-AF10-46F9-A7BC-1C7C87A86966}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Core", "src\Sudoku.Core\Sudoku.Core.csproj", "{8CD68474-4CFE-44A0-9AF1-68133E542A84}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.View", "src\Sudoku.View\Sudoku.View.csproj", "{1918A0BB-C39F-4E8C-882E-E47A459F0254}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,21 +25,27 @@ Global
 		{A9D2D5AD-0DEA-4B38-ACB3-30D8D439D7BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9D2D5AD-0DEA-4B38-ACB3-30D8D439D7BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9D2D5AD-0DEA-4B38-ACB3-30D8D439D7BA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BB1D90D2-C453-43D0-8AF5-53947630EBD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BB1D90D2-C453-43D0-8AF5-53947630EBD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BB1D90D2-C453-43D0-8AF5-53947630EBD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BB1D90D2-C453-43D0-8AF5-53947630EBD7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2EA4AE2B-1F84-48C5-AF11-7B170C9091E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2EA4AE2B-1F84-48C5-AF11-7B170C9091E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2EA4AE2B-1F84-48C5-AF11-7B170C9091E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2EA4AE2B-1F84-48C5-AF11-7B170C9091E3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{83C9BB24-D1CD-4A68-8B53-EAF2DEFE44D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{83C9BB24-D1CD-4A68-8B53-EAF2DEFE44D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{83C9BB24-D1CD-4A68-8B53-EAF2DEFE44D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{83C9BB24-D1CD-4A68-8B53-EAF2DEFE44D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D76309D7-AF10-46F9-A7BC-1C7C87A86966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D76309D7-AF10-46F9-A7BC-1C7C87A86966}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D76309D7-AF10-46F9-A7BC-1C7C87A86966}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D76309D7-AF10-46F9-A7BC-1C7C87A86966}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CD68474-4CFE-44A0-9AF1-68133E542A84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CD68474-4CFE-44A0-9AF1-68133E542A84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CD68474-4CFE-44A0-9AF1-68133E542A84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CD68474-4CFE-44A0-9AF1-68133E542A84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1918A0BB-C39F-4E8C-882E-E47A459F0254}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1918A0BB-C39F-4E8C-882E-E47A459F0254}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1918A0BB-C39F-4E8C-882E-E47A459F0254}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1918A0BB-C39F-4E8C-882E-E47A459F0254}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A9D2D5AD-0DEA-4B38-ACB3-30D8D439D7BA} = {1A61FA10-622F-4B47-9A81-2162F26BB068}
+		{D76309D7-AF10-46F9-A7BC-1C7C87A86966} = {34B18AB1-2A87-4C17-9F78-8ECFC15F28BB}
+		{8CD68474-4CFE-44A0-9AF1-68133E542A84} = {34B18AB1-2A87-4C17-9F78-8ECFC15F28BB}
+		{1918A0BB-C39F-4E8C-882E-E47A459F0254} = {34B18AB1-2A87-4C17-9F78-8ECFC15F28BB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C41525D8-7951-46C7-BF13-205C9E5826BB}
