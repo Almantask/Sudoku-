@@ -9,8 +9,8 @@ namespace Sudoku.Benchmarks
         [Benchmark]
         public void BenchmarkEasySolution()
         {
-            var _game = new Game(EasySudokuBoardData.Cells);
-            _game.Solve();
+            var game = new Game(EasySudokuBoardData.Cells);
+            game.Solve();
         }
         
     }
