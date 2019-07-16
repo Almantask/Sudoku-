@@ -1,6 +1,7 @@
 # Sudoku-
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f121490f72c04b21866ef88439e6819c)](https://app.codacy.com/app/Almantask/Sudoku-?utm_source=github.com&utm_medium=referral&utm_content=Almantask/Sudoku-&utm_campaign=Badge_Grade_Dashboard)
+[![Build Status](https://travis-ci.org/Almantask/Sudoku-.svg?branch=master)](https://travis-ci.org/Almantask/Sudoku-)
 
 Sudoku solver and generator.
 
