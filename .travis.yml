@@ -1,9 +1,11 @@
 language: csharp
 solution: "Sudoku.sln"
+dist: trusty
+mono: none
+dotnet: 2.1.502
 
 install:
-  - nuget restore "Sudoku.sln"
-  - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
+  - nuget restore
 script:
-  - msbuild /p:Configuration=Release "Sudoku.sln"
-  - mono ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./Tests/Sudoku.Tests/bin/Release/netcoreapp2.1/Sudoku.Tests.dll
+  - dotnet build
+  - dotnet test
