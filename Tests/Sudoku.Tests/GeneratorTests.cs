@@ -8,16 +8,16 @@ namespace Sudoku.Tests
     public class GeneratorTests
     {
 
-        [Theory(Skip = "Potentially takes too long.")]
+        [Theory]
+        //[Theory(Skip = "Potentially takes too long.")]
         [Trait("Category", "Generating")]
-        [InlineData(1)]
         [InlineData(2)]
         [InlineData(5)]
         [InlineData(10)]
         [InlineData(20)]
         [InlineData(30)]
         [InlineData(55)]
-        [InlineData(80)]
+        [InlineData(60)]
         public void Generate_Valid(int hidden)
         {
             var cells = Generator.Generate(hidden);

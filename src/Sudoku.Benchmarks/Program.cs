@@ -1,4 +1,4 @@
-﻿//using BenchmarkDotNet.Running;
+﻿using BenchmarkDotNet.Running;
 
 namespace Sudoku.Benchmarks
 {
@@ -6,7 +6,7 @@ namespace Sudoku.Benchmarks
     {
         static void Main(string[] args)
         {
-            //BenchmarkRunner.Run<SudokuBenchmarks>();
+            BenchmarkRunner.Run<SudokuBenchmarks>();
         }
     }
 }

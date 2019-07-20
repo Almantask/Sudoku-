@@ -11,6 +11,7 @@ namespace Sudoku.Core.Rules
     public class Game: ICloneable<Game>
     {
         public const int SudokuSize = 9;
+        public Counter Iterations { get; }
 
         public IList<Cell> UnsolvedCells { get; private set; }
 
@@ -18,12 +19,14 @@ namespace Sudoku.Core.Rules
 
         public Game()
         {
+            Iterations = new Counter();
             Board = new GameBoard();
             BuildUnsolvedCells();
         }
 
         public Game(int[,] filledCells)
         {
+            Iterations = new Counter();
             Board = new GameBoard(filledCells);
             BuildUnsolvedCells();
         }
@@ -59,9 +62,9 @@ namespace Sudoku.Core.Rules
                 Solve(this);
             }
             // Huge workaround to escape recursion
-            catch(SudokuCompletedException exection)
+            catch(SudokuCompletedException exception)
             {
-                return exection.Game;
+                return exception.Game;
             }
 
             throw new UnsolvableSudokuException();
@@ -69,6 +72,13 @@ namespace Sudoku.Core.Rules
 
         protected void Solve(Game game)
         {
+            Iterations.Count++;
+            const int sudokuStuckTreshold = 100000;
+            if (Iterations.Count > sudokuStuckTreshold)
+            {
+                throw new UnsolvableSudokuException();
+            }
+
             var result = game.FindCellWithLeastSolutions();
             if (!result.HasValue)
             {

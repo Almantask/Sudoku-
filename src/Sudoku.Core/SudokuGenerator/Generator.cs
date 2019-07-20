@@ -14,13 +14,36 @@ namespace Sudoku.Core
         public static int[,] Generate(int hidden)
         {
             ValidateHiddenAmount(hidden);
-
-            var game = new RandomGame();
-            var solution = game.Solve();
+            var solution = RandomizeBoard(0);
             var cells = solution.Board.CellsSolution;
             HideRandomly(hidden, cells);
 
             return cells;
+        }
+
+        private static Game RandomizeBoard(byte failedAttempts)
+        {
+            var game = new RandomGame();
+            
+            Game solution = null;
+            try
+            {
+                solution = game.Solve();
+            }
+            catch (UnsolvableSudokuException)
+            {
+                const int maxAllowedAttempts = 100;
+                if (failedAttempts < maxAllowedAttempts)
+                {
+                    return RandomizeBoard(++failedAttempts);
+                }
+                else
+                {
+                    throw new GenerateSudokuFailedException();
+                }
+            }
+
+            return solution;
         }
 
         public static bool IsValidHiddenCount(int hidden) => hidden > MinHiddenCount && hidden < MaxHiddenCount;
